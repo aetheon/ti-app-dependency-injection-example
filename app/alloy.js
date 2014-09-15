@@ -9,3 +9,41 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+var intravenous = require("/vendor/intravenous");
+
+var container = intravenous.create();
+
+container.register("Controller", require("/Controller"));
+
+
+/**
+ *
+ * Extend Alloy createController
+ * 
+ * @param  {String} name
+ * @param  {Array} args
+ * @return {}
+ * 
+ */
+Alloy.createController = function(name, args) {
+
+	//
+
+	console.log("createController")
+	
+	//alert(app.ioc)
+
+	var ControllerFactory = container.get("ControllerFactory");
+
+	console.log(ControllerFactory);
+
+	//var controller = ControllerFactory.use("view", { view: "view" }).get();
+
+	/// gets a new instance of the controller
+	//return (new require("alloy/controllers/" + name))(args);
+	//
+	return new (require("alloy/controllers/" + name))(args);
+
+};
+
