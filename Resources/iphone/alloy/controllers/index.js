@@ -7,26 +7,49 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "white",
+        backgroundColor: "yellow",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.label = Ti.UI.createLabel({
+    $.__views.__alloyId0 = Ti.UI.createView({
+        layout: "vertical",
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE,
+        id: "__alloyId0"
+    });
+    $.__views.index.add($.__views.__alloyId0);
+    $.__views.__alloyId1 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        text: "Hello, World",
-        id: "label"
+        font: {
+            fontSize: 24,
+            fontFamily: "Lucida Grande-Bold"
+        },
+        text: "Titanium IOC Example",
+        id: "__alloyId1"
     });
-    $.__views.index.add($.__views.label);
+    $.__views.__alloyId0.add($.__views.__alloyId1);
+    $.__views.__alloyId2 = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        color: "#000",
+        font: {
+            fontSize: 24,
+            fontFamily: "Lucida Grande-Bold"
+        },
+        text: "Oscar Brito - @aetheon",
+        id: "__alloyId2"
+    });
+    $.__views.__alloyId0.add($.__views.__alloyId2);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var ControllerFactory = require("/ControllerFactory");
-    var Controller = function(View, Arguments, al) {
-        alert(al.a);
-        $.index.open();
+    var Controller = function(View, Arguments, Logger) {
+        Logger.info("init");
+        View.index.open();
     };
-    Controller.$inject = [ "View", "Arguments", "A" ];
+    Controller.$inject = [ "View", "Arguments", "Logger" ];
+    var ControllerFactory = require("/ControllerFactory");
     module.exports = ControllerFactory.create(Controller, $, arguments);
     _.extend($, exports);
     $.postConstruct && $.postConstruct();

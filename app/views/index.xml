@@ -1,5 +1,10 @@
 <Alloy>
 	<Window class="container">
-		<Label id="label">Hello, World</Label>
+
+		<View>
+			<Label class="label">Titanium IOC Example</Label>
+			<Label class="label">Oscar Brito - @aetheon</Label>
+		</View>
+	
 	</Window>
 </Alloy>
