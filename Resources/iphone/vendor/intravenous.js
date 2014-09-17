@@ -217,16 +217,13 @@
                     if (reg) break;
                     currentContainer = currentContainer.parent;
                 }
-                console.log(key);
                 if (facility && facility.beforeResolve) {
                     var result = facility.beforeResolve(container, key, reg);
                     if (result.handled) return result.data;
                 }
-                console.log("oscar2");
                 if (!currentContainer) throw new Error("Unknown dependency: " + key);
                 if (facility && facility.resolve) {
                     var result = facility.resolve(container, key, reg);
-                    console.log(result);
                     if (result.handled) return result.data;
                 }
                 var instance;

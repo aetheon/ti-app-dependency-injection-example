@@ -5,11 +5,16 @@
  * 
  */
 
-function doClick(e) {
-    alert($.label.text);
-}
+var ControllerFactory = require("/ControllerFactory");
 
-$.index.open();
+var Controller = function(View, Arguments, al){
 
+	alert(al.a);
+	$.index.open();
 
-module.exports = function(){};
+};
+
+Controller.$inject = [ "View", "Arguments" ];
+
+/// return the instance of the controller.
+module.exports = ControllerFactory.create(Controller, $, arguments);

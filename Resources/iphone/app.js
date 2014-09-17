@@ -2,15 +2,12 @@ var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 var intravenous = require("/vendor/intravenous");
 
-var container = intravenous.create();
+Alloy.Globals.IOC = intravenous.create();
 
-container.register("Controller", require("/Controller"));
-
-Alloy.createController = function(name, args) {
-    console.log("createController");
-    var ControllerFactory = container.get("ControllerFactory");
-    console.log(ControllerFactory);
-    return new (require("alloy/controllers/" + name))(args);
+var A = function() {
+    this.a = "lopes";
 };
+
+Alloy.Globals.IOC.register("A", A);
 
 Alloy.createController("index");
